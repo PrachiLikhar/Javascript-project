@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quote</title>
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            background: rgb(15, 2, 38);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container{
+            width: 90%;
+            max-width: 400px;
+            background: #fff;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            box-shadow: 5px 5px 5px  6px#fff;
+        }
+        .container hr{
+            width: 50px;
+            border: 2px solid yellowgreen;
+            margin: auto;
+        }
+        .container h1{
+            color: black;
+            text-align: center;
+            padding: 10px 20px 0px;
+        }
+        .container h2{
+            font-family: 'Protest Riot', sans-serif;;
+            color: rgba(0, 0, 0, 0.511);
+            padding: 10px 30px 0px;
+            text-align: center;
+        }
+        .container p{
+            text-align: end;
+            margin-top:40px;
+            margin-bottom: 20px;
+        }
+        .container button{
+          
+            background: yellowgreen;
+          color:black;
+          font-size: 15px;
+            border: none;
+            outline: none;
+             padding: 10px;
+             border-radius: 10px;
+             margin-left:170px;
+             margin-bottom: 10px; 
+             
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 >Quote of the day</h1>
+        <hr>
+        <h2 id="quote">loading....</h2>
+        <p id="author">loadiing...</p>
+        
+        <button onclick="getquote(api_url)">New Quote</button>
+       
+      
+    </div>
+    <script>
+        let quote=document.getElementById("quote");
+        let author=document.getElementById("author");
+        let btn=document.getElementById("btn");
+        const api_url = "https://api.quotable.io/random";
+        async function getquote(url){
+            const response=await fetch(url);
+            let data=await response.json();
+            console.log(data);
+         quote.innerHTML=(data.content);
+         author.innerHTML=(data.author);
+         
+        }
+       
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>minicalender</title>
+    <style>
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(15, 15, 62);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    width: 500px;
+    height: 400px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.date-day{
+    width: 250px;
+    height: 300px;
+    background: #fff;
+    color: rgba(0, 0, 0, 0.3);
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.date-day h1{
+    font-size: 150px;
+    text-align: center;
+}
+.date-day h4{
+    font-size: 40px;
+    text-align: center;
+}
+
+.month-year{
+    width: 200px;
+    height: 300px;
+    background:red;
+    color: #fff;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-top: 100px;
+}
+.month-year h3{
+    font-size: 30px;
+    text-align: center;
+    margin-top: 10px;
+}
+    </style>
+   
+</head>
+<body>
+   <div class="container">
+    <div class="date-day">
+    <h1 id="date"></h1>
+    <h4 id="day"></h4>
+</div>
+<div class="month-year">
+    <h3 id="month"></h3>
+    <h3 id="year"></h3>
+</div>
+   </div> 
+   <script>
+   
+    let time=new Date();
+// day
+    let day=time.getDay();
+    let days=["Sunday","Monday","Tuesday","Wenesday","Thuesday","Friday","Saturday"]
+    let currentday=(days[day]);
+// date
+   let currentdate=(time.getDate());
+//    month
+    let months=["January","February","March","April","May","June","July","Augest","September","October","November","December"];
+    let month=(time.getMonth());
+   let currentmonth=(months[month]);
+//    year
+   let currentyear=(time.getFullYear());
+    document.querySelector("#day").innerHTML=currentday;
+    document.querySelector("#date").innerHTML=currentdate;
+    document.querySelector("#month").innerHTML=currentmonth;
+    document.querySelector("#year").innerHTML=currentyear;
+   </script>
+</body>
+</html>

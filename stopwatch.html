@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        body {
+            background: skyblue;
+            width: 100%;
+            height: 100vh;
+            padding-top: 100px;
+        }
+
+        .stopwatch{
+            width: 90%;
+            max-width: 600px;
+            background-color: rgb(3, 49, 80);
+            border: none;
+           margin: auto;
+           border-radius: 10px;
+}
+
+        .stopwatch h1{
+            font-size: 80px;
+           text-align: center;
+            color: aliceblue;
+            padding-top: 80px;
+            box-sizing: border-box;
+        }
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+        img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 100px auto 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="stopwatch">
+        <h1 id="displaytime">00:00:00</h1>
+         <div class="buttons">
+           <img onclick="watchstop()"src="https://tse2.mm.bing.net/th?id=OIP.ODObaVSbTK5wIvPhB8RSEAHaHa&pid=Api&P=0&h=180">
+            <img onclick="watchstart()"src="https://tse1.mm.bing.net/th?id=OIP.QF5OnUHVD1O5l3gSwmqxLwHaHa&pid=Api&P=0&h=180">
+            <img onclick="restart()"src="https://tse3.mm.bing.net/th?id=OIP.kKsbo7Jt6hjc5hF943SfDQHaHh&pid=Api&P=0&h=180">
+            
+        </div>
+    </div>
+
+
+
+    <script>
+        let a=[seconds,minutes,hours]=[0,0,0];
+        let displaytime=document.getElementById("displaytime");
+        let timer=null;
+        function startwatch() {
+            seconds++
+            if(seconds==60){
+                seconds=0;
+                minutes++
+            
+            if(minutes==60){
+                minutes=0;
+                hours++;
+            }
+        } 
+let h=hours<10?"0"+hours:hours;
+let m=minutes<10?"0"+minutes:minutes;
+let s=seconds<10?"0"+seconds:seconds;
+
+
+        displaytime.innerHTML=h+":"+m+":"+s;
+        }
+        function watchstart(){
+            if(timer!==null){
+                clearInterval(timer);
+            }
+           timer= setInterval(startwatch,1000)
+        }
+        function watchstop(){
+            clearInterval(timer);
+        }
+        function restart(){
+clearInterval(timer);
+[seconds,minutes,hours]=[0,0,0]
+displaytime.innerHTML="00:00:00";
+        }
+    </script>
+</body>
+
+</html>
